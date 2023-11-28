@@ -1,9 +1,7 @@
 const contacts = require("./contacts");
 
 const argv = require("yargs").argv;
-// const { hideBin } = require("yargs/helpers");
 
-// TODO: рефакторити
 async function invokeAction({ action, id, name, email, phone }) {
   switch (action) {
     case "list":
@@ -13,7 +11,7 @@ async function invokeAction({ action, id, name, email, phone }) {
       break;
 
     case "get":
-      const CurrentContact = await contacts.getContactById(contactId);
+      const CurrentContact = await contacts.getContactById(id);
       console.log(CurrentContact);
 
       break;
@@ -24,7 +22,7 @@ async function invokeAction({ action, id, name, email, phone }) {
       break;
 
     case "remove":
-      const delatedContact = await contacts.removeContact(contactId);
+      const delatedContact = await contacts.removeContact(id);
       console.log(delatedContact);
       break;
 

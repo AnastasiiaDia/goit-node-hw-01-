@@ -3,15 +3,13 @@ const { nanoid } = require("nanoid");
 const path = require("path");
 
 const contactsPath = path.join(__dirname, "db/contacts.json");
-// TODO: задокументувати кожну функцію
+
 async function listContacts() {
-  // ...твій код. Повертає масив контактів.
   const AllContacts = await fs.readFile(contactsPath, "utf8");
   return JSON.parse(AllContacts);
 }
 
 async function getContactById(contactId) {
-  // ...твій код. Повертає об'єкт контакту з таким id. Повертає null, якщо контакт з таким id не знайдений.
   const AllContacts = await listContacts();
   const CurrentContact = AllContacts.find(
     (contact) => contact.id === contactId
@@ -20,7 +18,6 @@ async function getContactById(contactId) {
 }
 
 async function removeContact(contactId) {
-  // ...твій код. Повертає об'єкт видаленого контакту. Повертає null, якщо контакт з таким id не знайдений.
   const AllContacts = await listContacts();
   const index = AllContacts.findIndex((contact) => contact.id === contactId);
   if (index === -1) {
@@ -32,7 +29,6 @@ async function removeContact(contactId) {
 }
 
 async function addContact(name, email, phone) {
-  // ...твій код. Повертає об'єкт доданого контакту.
   const AllContacts = await listContacts();
   const NewContact = {
     id: nanoid(),
